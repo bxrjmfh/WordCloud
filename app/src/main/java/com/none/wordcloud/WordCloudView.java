@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +24,6 @@ import java.util.Random;
 public class WordCloudView extends FrameLayout implements View.OnClickListener {
 
     Random random = new Random();
-    String[] words;
     HashSet<View> placed = new HashSet<>();
 
     public WordCloudView(Context context) {
@@ -124,17 +124,22 @@ public class WordCloudView extends FrameLayout implements View.OnClickListener {
 //        }
 //    }
 
+
+
     LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-    float[] rotates = {
+    /*float[] rotates = {
             0f,90f,270f
-    };
-
+    };*/
     public void addTextView(String word, int weight) {
         TextView tv = new TextView(getContext());
         tv.setText(word);
         tv.setTextSize(weight);
-        tv.setRotation(rotates[random.nextInt(rotates.length)]);
+//        tv.setRotation(rotates[random.nextInt(rotates.length)]);
+//        设置旋转角度
+        if(random.nextInt(2)%3==0){
+                tv.setEms(1);
+        }
         tv.setOnClickListener(this);
         addView(tv, params);
     }
